@@ -1,7 +1,8 @@
 import os
 import json
 import logging
-import datetime
+import time
+from datetime import datetime
 from Notification import NotifyThread
 from telegram.ext import Updater
 
@@ -30,13 +31,19 @@ if __name__ == "__main__":
     updater = Updater(TOKEN)
     dispatcher = updater.dispatcher
 
+    update_time = [8, 20]
+    now = datetime.now()
+
     # redis_conc = redis.Redis(connection_pool=conc_pool)
     # # print(redis_conc.keys())
     # for chat_id in redis_conc.keys():
     #     NotifyThread(dispatcher, conc_pool, chat_id).start()
 
-    path = './user_info'
-    json_files = os.listdir(path)
-    for file in json_files:
-        user_data_path = os.path.join(path, file)
-        NotifyThread(dispatcher, user_data_path).start()
+    while True:
+        if now.hour in update_time:
+            path = './user_info'
+            json_files = os.listdir(path)
+            for file in json_files:
+                user_data_path = os.path.join(path, file)
+                NotifyThread(dispatcher, user_data_path).start()
+        time.sleep(3600)
