@@ -101,7 +101,7 @@ class NotifyThread(threading.Thread):
                 self.driver.get(url)
                 new_prod_price = self.WebWait.until(
                     EC.visibility_of_element_located(
-                        (By.XPATH, "//li[@class='special']/span")
+                        (By.XPATH, "//li[@class='special']//span")
                     )
                 ).text
                 new_prod_price = new_prod_price.replace(',', '')

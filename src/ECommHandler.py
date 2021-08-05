@@ -21,7 +21,7 @@ class ECommHandler:
         if store == 'momoshop':
             opts = Options()
             opts.headless = True
-            self.driver = webdriver.Firefox(firefox_options=opts)
+            self.driver = webdriver.Firefox()
             self.WebWait = WebDriverWait(self.driver, 20)
 
         # heroku
@@ -42,7 +42,7 @@ class ECommHandler:
 
     def pchome(self):
 
-        prod_name = 'Fail'
+        prod_name = None
         prod_price = -1
 
         pchome_api = f'https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/{self.prod_code}-000&fields=Id,Name,Price&_callback=jsonp_prod'
@@ -84,7 +84,7 @@ class ECommHandler:
 
     def momoshop(self):
 
-        prod_name = 'Fail'
+        prod_name = None
         prod_price = -1
 
         try:
@@ -93,22 +93,25 @@ class ECommHandler:
         except InvalidArgumentException:
             return None, None
 
+        print(self.url)
+
         try:
             prod_name = self.WebWait.until(
                 EC.visibility_of_element_located(
-                    (By.XPATH, "//div[@class='prdnoteArea']/h3")
+                    (By.XPATH, "//div[@class='prdnoteArea jsCartFloat']//h3")
                     )
                 ).text
 
             prod_price = self.WebWait.until(
                 EC.visibility_of_element_located(
-                    (By.XPATH, "//li[@class='special']/span")
+                    (By.XPATH, "//li[@class='special']//span")
                     )
                 ).text
             prod_price = prod_price.replace(',', '')
             
         except:
             logger.warning(self.url + ' not found')
+            self.driver.quit()
             return prod_name, prod_price
         
         self.driver.quit()

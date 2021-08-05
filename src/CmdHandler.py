@@ -114,7 +114,7 @@ class CmdHandler:
             re_msg = f'{prod_name} {prod_price}元 已成功加入囉'
             return re_msg
 
-        elif prod_name == 'Fail':
+        elif not prod_name:
             re_msg = '不小心出了一點意外，請稍後再試一次喔'
             return re_msg
 
