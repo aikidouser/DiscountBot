@@ -21,7 +21,7 @@ class ECommHandler:
         if store == 'momoshop':
             opts = Options()
             opts.headless = True
-            self.driver = webdriver.Firefox()
+            self.driver = webdriver.Firefox(firefox_options=opts)
             self.WebWait = WebDriverWait(self.driver, 20)
 
         # heroku

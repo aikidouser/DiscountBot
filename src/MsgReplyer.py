@@ -68,9 +68,6 @@ def help_cmd(update: Update, context: CallbackContext):
         if msg_sep[1] == 'del':
             re_msgs[0] = '範例: /del 耳機\n'
             re_msgs[0] += '這樣就會把所有商品名稱中包含耳機的全部刪掉喔'
-            re_msgs[1] = '如果忘了自己到底加了什麼\n'
-            re_msgs[1] += '那就直接 /del 就會列出來囉\n'
-            re_msgs[1] += '接著點選就會刪除了'
             
         elif msg_sep[1] == 'list':
             re_msgs[0] = '範例: /list\n'
