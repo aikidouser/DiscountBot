@@ -157,7 +157,14 @@ class CmdHandler:
     def del_by_keyword(self):
 
         num_del_sum = 0
+        replace_list = ['-', '(', ')', '[', ']', '+', '.', '|', '_', '`', '*']
+        keyword = self.keyword
+
+        for c in replace_list:
+            if c in self.keyword:
+                self.keyword = self.keyword.replace(c, '\\' + c)
         self.keyword = self.keyword.lower()
+
         while True:
             num_del = 0
             for prod in self.prods:
@@ -174,7 +181,7 @@ class CmdHandler:
             self.write_back()
             re_msg = f'已刪除 {num_del_sum} 項追蹤商品'
         else:
-            re_msg = f'追蹤商品中並沒有包含 {self.keyword} 的商品喔'
+            re_msg = f'追蹤商品中並沒有包含 {keyword} 的商品喔'
         return re_msg
 
     def write_back(self):
