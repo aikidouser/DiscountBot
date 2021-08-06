@@ -145,13 +145,12 @@ def notf_cmd(update: Update, context: CallbackContext):
         mod_id = configure['mod']
 
     if update.message.chat_id == mod_id:
-
         path = './user_info'
         json_files = os.listdir(path)
         for file in json_files:
             chat_id = re.search('\d*', file).group(0)
-            print(chat_id)
-            context.bot.send_message(chat_id, update.message.text.split()[1])
+            notf_msg = f'這是一則通知：\n{update.message.text.split()[1]}'
+            context.bot.send_message(chat_id, notf_msg)
 
 def exp_msg(update: Update, context):
 
