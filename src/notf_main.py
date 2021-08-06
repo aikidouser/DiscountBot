@@ -31,15 +31,15 @@ if __name__ == "__main__":
     updater = Updater(TOKEN)
     dispatcher = updater.dispatcher
 
-    update_time = [8, 20]
-    now = datetime.now()
-
     # redis_conc = redis.Redis(connection_pool=conc_pool)
     # # print(redis_conc.keys())
     # for chat_id in redis_conc.keys():
     #     NotifyThread(dispatcher, conc_pool, chat_id).start()
 
+    update_time = [8, 20]
+
     while True:
+        now = datetime.now()
         if now.hour in update_time:
             path = './user_info'
             json_files = os.listdir(path)
