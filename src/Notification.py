@@ -80,7 +80,7 @@ class NotifyThread(threading.Thread):
 
         elif 'momoshop' in url:
             try:
-                response = requests.get(self.url, headers=self.headers)
+                response = requests.get(url, headers=self.headers)
 
             except Exception:
                 return new_prod_price
