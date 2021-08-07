@@ -22,7 +22,8 @@ class NotifyThread(threading.Thread):
 
         self.chat_id = self.user_data["chat_id"]
         self.prods = self.user_data['prods']
-        self.headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0'}
+        self.headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0',
+                        'Cookie': 'ECC=GoogleBot'}
 
         # run local
         # opts = Options()

@@ -41,7 +41,7 @@ if __name__ == "__main__":
     while True:
         now = datetime.now()
         if now.hour in update_time:
-            path = '.\\user_info'
+            path = './user_info'
             json_files = os.listdir(path)
             for file in json_files:
                 user_data_path = os.path.join(path, file)
