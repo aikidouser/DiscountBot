@@ -73,7 +73,11 @@ class NotifyThread(threading.Thread):
 
             prod_code = re.search(r'\/prod\/(\w*-\w*)', url).group(1)
             pchome_api = f'https://ecapi.pchome.com.tw/ecshop/prodapi/v2/prod/{prod_code}-000&fields=Id,Name,Price&_callback=jsonp_prod'
-            response = requests.get(pchome_api, headers=self.headers).text
+            try:
+                response = requests.get(pchome_api, headers=self.headers).text
+            except Exception:
+                return new_prod_price
+
             if response:
                 prod_info = re.search(r'\{\"Id.*[\"\d]\}\}', response).group(0)
                 prod_info = json.loads(prod_info)
