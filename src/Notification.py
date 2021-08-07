@@ -86,7 +86,11 @@ class NotifyThread(threading.Thread):
                 return new_prod_price
 
             soup = BeautifulSoup(response.text, features='html.parser')
-            new_prod_price = soup.select('td.priceTxtArea b')[0].text
+            try:
+                new_prod_price = soup.select('td.priceTxtArea b')[0].text
+
+            except Exception:
+                new_prod_price = soup.select('td.priceArea b')[0].text
             new_prod_price = int(new_prod_price.replace(',', ''))
 
             # try:

@@ -77,7 +77,11 @@ class ECommHandler:
 
         soup = BeautifulSoup(response.text, features='html.parser')
         prod_name = soup.select('p.fprdTitle')[0].text
-        prod_price = soup.select('td.priceTxtArea b')[0].text
+        try:
+            prod_price = soup.select('td.priceTxtArea b')[0].text
+
+        except Exception:
+            prod_price = soup.select('td.priceArea b')[0].text
         prod_price = prod_price.replace(',', '')
 
         # try:
