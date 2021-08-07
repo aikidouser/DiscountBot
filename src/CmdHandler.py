@@ -7,15 +7,6 @@ from ECommHandler import ECommHandler
 
 logger = logging.getLogger(__name__)
 
-# url = urlparse(os.environ.get("REDIS_URL"))
-# conc_pool = redis.ConnectionPool(
-#     host=url.hostname,
-#     port=url.port,
-#     username=url.username,
-#     password=url.password,
-#     decode_responses=True
-# )
-
 
 class CmdHandler:
 
@@ -37,12 +28,6 @@ class CmdHandler:
         # dill with url
         if self.url:
             self.url_check = self.get_fixed_type_url()
-
-        # self.redis_conc = redis.Redis(connection_pool=conc_pool)
-        # if self.redis_conc.exists(self.chat_id):
-        #     prods_list_str = self.redis_conc.get(self.chat_id)
-        #     prods_list_str = prods_list_str.replace('\'', '\"')
-        #     self.prods = json.loads(prods_list_str)
 
         # Check if the user file exists
         path = './user_info/' + str(self.chat_id) + '.json'
@@ -66,7 +51,8 @@ class CmdHandler:
             self.url = pchome_basic_url + self.prod_code
 
         elif 'momoshop' in self.url and 'goods' in self.url:
-            momo_basic_url = 'https://www.momoshop.com.tw/goods/GoodsDetail.jsp?'
+            # momo_basic_url = 'https://www.momoshop.com.tw/goods/GoodsDetail.jsp?'
+            momo_basic_url = 'https://m.momoshop.com.tw/goods.momo?'
             self.prod_code = re.search(r'i_code=\d+', self.url).group(0)
             self.url = momo_basic_url + self.prod_code
 
