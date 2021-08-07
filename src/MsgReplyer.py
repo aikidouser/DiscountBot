@@ -140,13 +140,12 @@ def list_cmd(update: Update, context: CallbackContext):
 
 def notf_cmd(update: Update, context: CallbackContext):
 
-    update.message.reply_text('已收到通知訊息')
-
     with open('configure.json', 'r') as json_file:
         configure = json.load(json_file)
         mod_id = configure['mod']
 
     if update.message.chat_id == mod_id:
+        update.message.reply_text('已收到通知訊息')
         path = './user_info'
         json_files = os.listdir(path)
         for file in json_files:
