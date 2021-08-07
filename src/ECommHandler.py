@@ -93,8 +93,6 @@ class ECommHandler:
         except InvalidArgumentException:
             return None, None
 
-        print(self.url)
-
         try:
             prod_name = self.WebWait.until(
                 EC.visibility_of_element_located(

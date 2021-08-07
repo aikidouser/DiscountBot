@@ -36,7 +36,7 @@ if __name__ == "__main__":
     # for chat_id in redis_conc.keys():
     #     NotifyThread(dispatcher, conc_pool, chat_id).start()
 
-    update_time = [8, 20]
+    update_time = [8, 22]
 
     while True:
         now = datetime.now()

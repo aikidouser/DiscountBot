@@ -31,7 +31,7 @@ class NotifyThread(threading.Thread):
         # prods_list_str = prods_list_str.replace('\'', '\"')
         # self.prods = json.loads(prods_list_str)
 
-        # run loacal
+        # run local
         opts = Options()
         opts.headless = True
         self.driver = webdriver.Firefox(firefox_options=opts)
@@ -105,7 +105,6 @@ class NotifyThread(threading.Thread):
                     )
                 ).text
                 new_prod_price = new_prod_price.replace(',', '')
-
                 new_prod_price = int(new_prod_price)
 
             except Exception:

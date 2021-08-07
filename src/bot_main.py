@@ -19,7 +19,7 @@ if __name__ == '__main__':
     TOKEN = configure['token']
     # PORT = int(os.environ.get('PORT', '5000'))
     
-    updater = Updater(TOKEN, workers=50)
+    updater = Updater(TOKEN, workers=100)
     dispatcher = updater.dispatcher
     
     # ignore edit
