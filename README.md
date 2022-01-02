@@ -1,8 +1,10 @@
 # 特價通知機器人
 
-1. 查詢完商品的最低價
-2. 使用此機器人將商品頁面加入機器人
-3. 會定期幫你查詢價格，若低於原本的價格就會通知你
+<font style="color:red;font-size:30px"> 這個機器人因存在重大錯誤，已暫停運行</font>
+
+1. 查詢商品的價格
+2. 使用此機器人將商品頁面加入清單
+3. 會定期查詢價格，若低於原本的價格將會通知使用者
 
 # 使用手冊
 
@@ -13,12 +15,12 @@
 - 24hpchome
   - 網址內需包含 24h, pchome, prod，其需皆可無視
   - 範例
-    - https://24h.pchome.com.tw/prod/DCAYKO-A90090S6A
+    - <https://24h.pchome.com.tw/prod/DCAYKO-A90090S6A>
     - ![](https://i.imgur.com/CWgy8oA.png)
 - momo
   - 網址內需包含 momoshop, goods, i_code，其餘皆可無視
   - 範例
-    - https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=5681462
+    - <https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=5681462>
     - ![](https://i.imgur.com/pvgVjjR.png)
 
 ### 使用方式
@@ -74,3 +76,35 @@
 - 查新價格的時候出了一點意外
   - 發訊息和連結通知
 
+# 程式架構
+
+## 處理商品追蹤清單
+
+### bot_main.py
+
+- python-telegram-bot 的基本設定
+  - 指令
+  - workers 的數目：同時有多少執行緒處理指令。最大100。
+
+### MsgReplyer.py
+
+- 針對傳來的指令給出回覆
+  - start_cmd
+    - 剛加入機器人時的回傳訊息
+  - help_cmd
+    - 相關教學
+  - add_cmd
+  - del_cmd
+  - list_cmd
+  - exp_msg
+  - error_callback
+
+### CmdReplyer.py
+
+### ECommHandler.py
+
+## 更新商品價格
+
+### notf_main.py
+
+### Notification.py
